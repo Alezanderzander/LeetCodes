@@ -1,0 +1,19 @@
+class Solution(object):
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        letterIndex = 0
+        prefix=[]
+        
+        smallestWord = min(len(word) for word in strs)
+
+        for letterIndex in range(smallestWord):
+            current = strs[0][letterIndex]
+            for word in strs[1:]:
+                if word[letterIndex] != current:
+                    return ''.join(prefix)
+
+            prefix.append(current)
+        return ''.join(prefix)
